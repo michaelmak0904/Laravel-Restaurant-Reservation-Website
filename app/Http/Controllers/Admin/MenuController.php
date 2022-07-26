@@ -31,7 +31,7 @@ class MenuController extends Controller
     public function create()
     {
         //
-        $categories = menu::all();
+        $categories = Category::all();
         return view('admin.menus.create', compact('categories'));
     }
 
@@ -130,7 +130,7 @@ class MenuController extends Controller
         Storage::delete($menu->image);
         $menu->categories()->detach($menu->categories);
         $menu->delete();
-        
+
         return to_route('admin.menus.index');
     }
 }
